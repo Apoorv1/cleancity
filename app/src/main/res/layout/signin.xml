@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/abc"
+    >
+
+
+
+    <View
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:alpha="0.4"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="LOGIN"
+        android:textSize="70sp"
+        android:id="@+id/textView"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="TO"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:id="@+id/textView2"
+        android:layout_marginTop="72dp"
+        android:layout_alignTop="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="YOUR ACCOUNT"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/signin_email"
+        android:hint="  Enter User Email"
+        android:textColorHint="#000000"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint=" Enter User Passwrod"
+        android:textSize="20sp"
+        android:textColorHint="#000000"
+        android:textColor="#FFFFFF"
+        android:id="@+id/signin_password"
+        android:layout_below="@+id/signin_email"
+        android:layout_alignLeft="@+id/signin_email"
+        android:layout_alignStart="@+id/signin_email"
+        android:layout_alignRight="@+id/signin_email"
+        android:layout_alignEnd="@+id/signin_email" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white"
+        android:text="SIGN IN"
+        android:gravity="center_horizontal"
+        android:padding="10sp"
+        android:textSize="20sp"
+        android:id="@+id/signine"
+        android:layout_below="@+id/signin_password"
+        android:layout_marginTop="6dp"
+        android:layout_alignLeft="@+id/signin_password"
+        android:layout_alignStart="@+id/signin_password"
+        android:layout_alignRight="@+id/signin_password"
+        android:layout_alignEnd="@+id/signin_password" />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:padding="10sp"
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/white"
+        android:text="SIGN IN WITH GOOGLE"
+        android:id="@+id/signing"
+        android:textSize="20sp"
+        android:layout_marginTop="6dp"
+        android:layout_below="@+id/signine"
+        android:layout_alignRight="@+id/signine"
+        android:layout_alignEnd="@+id/signine"
+        android:layout_alignLeft="@+id/signine"
+        android:layout_alignStart="@+id/signine" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Don't have an account? SIGNUP"
+        android:textColor="#FFFFFF"
+        android:clickable="true"
+        android:id="@+id/signuplink"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/signing"
+        android:layout_marginTop="12dp"
+        android:layout_alignRight="@+id/signine"
+        android:layout_alignEnd="@+id/signine"
+        android:layout_alignLeft="@+id/signine"
+        android:layout_alignStart="@+id/signine" />
+</RelativeLayout>

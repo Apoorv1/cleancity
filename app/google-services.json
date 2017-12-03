@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "228884866655",
+    "firebase_url": "https://cleancity-dc15b.firebaseio.com",
+    "project_id": "cleancity-dc15b",
+    "storage_bucket": "cleancity-dc15b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228884866655:android:c3b6410c8a95603a",
+        "android_client_info": {
+          "package_name": "com.example.android.tabbedexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228884866655-3oea6fmlqkfd71bl5kbq8g4q1agsg3qh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.tabbedexample",
+            "certificate_hash": "7c23c64c592bb96dadfa8a8f6b57dfd128c67044"
+          }
+        },
+        {
+          "client_id": "228884866655-j5vmqdukqj6bbv69ee2pv4474mmj02dl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADQSFt0yt22ZD1imrcq42x6ybOm6ipJdM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228884866655-j5vmqdukqj6bbv69ee2pv4474mmj02dl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

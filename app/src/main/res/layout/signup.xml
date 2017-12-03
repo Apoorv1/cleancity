@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/abc"
+    >
+
+    <View
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:alpha="0.4"
+        android:layout_alignParentTop="true" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="SIGNUP"
+        android:textSize="70sp"
+        android:id="@+id/textView"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="TO"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:id="@+id/textView2"
+        android:layout_marginTop="72dp"
+        android:layout_alignTop="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="YOUR ACCOUNT"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/signup_name"
+        android:hint="  Enter User Name"
+        android:textColorHint="#000000"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="  Enter User Email"
+        android:textSize="20sp"
+        android:textColorHint="#000000"
+        android:textColor="#FFFFFF"
+        android:id="@+id/signup_email"
+        android:layout_below="@+id/signup_name"
+        android:layout_alignLeft="@+id/signup_name"
+        android:layout_alignStart="@+id/signup_name"
+        android:layout_alignRight="@+id/signup_name"
+        android:layout_alignEnd="@+id/signup_name" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint=" Enter User Passwrod"
+        android:textSize="20sp"
+        android:textColorHint="#000000"
+        android:textColor="#FFFFFF"
+        android:id="@+id/signup_password"
+        android:layout_below="@+id/signup_email"
+        android:layout_alignLeft="@+id/signup_email"
+        android:layout_alignStart="@+id/signup_email"
+        android:layout_alignRight="@+id/signup_email"
+        android:layout_alignEnd="@+id/signup_email" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint=" Renter Your Passwrod"
+        android:textSize="20sp"
+        android:textColorHint="#000000"
+        android:textColor="#FFFFFF"
+        android:id="@+id/signup_renterpassword"
+        android:layout_below="@+id/signup_password"
+        android:layout_alignLeft="@+id/signup_password"
+        android:layout_alignStart="@+id/signup_password"
+        android:layout_alignRight="@+id/signup_password"
+        android:layout_alignEnd="@+id/signup_password" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white"
+        android:text="SIGN UP"
+        android:textSize="20sp"
+        android:gravity="center_horizontal"
+        android:padding="10sp"
+        android:id="@+id/signupe"
+        android:layout_below="@+id/signup_renterpassword"
+        android:layout_marginTop="6dp"
+        android:layout_alignLeft="@+id/signup_renterpassword"
+        android:layout_alignStart="@+id/signup_renterpassword"
+        android:layout_alignRight="@+id/signup_renterpassword"
+        android:layout_alignEnd="@+id/signup_renterpassword" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"
+        android:text="SIGN UP WITH GOOGLE"
+        android:id="@+id/signupg"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:padding="10sp"
+        android:layout_marginTop="6dp"
+        android:layout_below="@+id/signupe"
+        android:layout_alignRight="@+id/signupe"
+        android:layout_alignEnd="@+id/signupe"
+        android:layout_alignLeft="@+id/signupe"
+        android:layout_alignStart="@+id/signupe" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Already have an account? SIGNIN"
+        android:textColor="#FFFFFF"
+        android:clickable="true"
+        android:id="@+id/signinlink"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/signupg"
+        android:layout_marginTop="12dp"
+        android:layout_alignRight="@+id/signupe"
+        android:layout_alignEnd="@+id/signupe"
+        android:layout_alignLeft="@+id/signupe"
+        android:layout_alignStart="@+id/signupe" />
+
+</RelativeLayout>
