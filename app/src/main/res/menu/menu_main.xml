@@ -4,7 +4,20 @@
     tools:context="com.example.android.tabbedexample.MainActivity">
     <item
         android:id="@+id/action_settings"
+        android:icon="@android:drawable/ic_menu_preferences"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="never" />
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/about"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:orderInCategory="101"
+        android:title="About"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/logout"
+        android:icon="@android:drawable/ic_lock_power_off"
+        android:orderInCategory="102"
+        android:title="Logout"
+        app:showAsAction="withText" />
 </menu>

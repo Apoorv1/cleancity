@@ -1,0 +1,83 @@
+
+    <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:weightSum="1"
+    android:id="@+id/settingpage">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:clickable="true"
+        android:onClick="username"
+        android:padding="3dp"
+        android:text="Username"
+        android:textSize="35dp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="abc"
+        android:background="@color/cardview_shadow_start_color"
+        />
+
+
+
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:clickable="true"
+        android:onClick="Useremail"
+        android:padding="3dp"
+        android:text="User Email"
+        android:textSize="35dp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="abc@gmail.com"
+        android:background="@color/cardview_shadow_start_color"
+        />
+
+
+
+</LinearLayout>
+<Switch
+    android:id="@+id/switch2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Notifications"
+    android:textSize="35dp"
+    android:clickable="true"
+    android:background="@color/cardview_shadow_start_color"
+    android:layout_marginTop="10dp"
+    android:onClick="notifications"
+    android:layout_weight="0.11" />
+
+
+</LinearLayout>
