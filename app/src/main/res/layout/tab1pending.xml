@@ -145,6 +145,7 @@
 
     </android.support.v7.widget.CardView>
 
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
@@ -155,11 +156,6 @@
             android:clickable="true"
             app:fabSize="mini"
             app:srcCompat="@android:drawable/ic_input_add"
-            card_view:backgroundTint="@android:color/black"
-            card_view:elevation="4dp"
-            card_view:rippleColor="@color/cardview_shadow_end_color"
-            card_view:srcCompat="@android:drawable/ic_menu_add" />
-
-
+            />
     </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>

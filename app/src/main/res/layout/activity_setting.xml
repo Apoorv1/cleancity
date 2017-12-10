@@ -1,5 +1,4 @@
-
-    <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
@@ -13,7 +12,7 @@ android:weightSum="1"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/username_head"
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_marginTop="10dp"
@@ -25,7 +24,7 @@ android:weightSum="1"
         android:textSize="35dp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -43,7 +42,7 @@ android:weightSum="1"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/useremail_head"
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_marginTop="10dp"
@@ -55,7 +54,7 @@ android:weightSum="1"
         android:textSize="35dp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/useremail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -68,7 +67,7 @@ android:weightSum="1"
 
 </LinearLayout>
 <Switch
-    android:id="@+id/switch2"
+    android:id="@+id/notify_switch"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Notifications"
