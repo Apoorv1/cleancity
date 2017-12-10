@@ -108,8 +108,8 @@ public class signup extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         // Check for existing Google Sign In account, if the user is already signed in
         // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        updateui(account);//perform actions according to account object
+        //GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        //updateui(account);//perform actions according to account object
         signupg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,5 +1,7 @@
 package com.example.android.tabbedexample;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -14,8 +16,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class Home extends AppCompatActivity {
 
+    GoogleSignInClient mGoogleSignInClient;
 
 
         /**
@@ -69,9 +78,18 @@ public class Home extends AppCompatActivity {
             int id = item.getItemId();
 
             //noinspection SimplifiableIfStatement
-            if (id == R.id.action_settings) {
-                return true;
+            if (id == R.id.settings) {
+                startActivity(new Intent(Home.this,setting.class));
             }
+            else if(id == R.id.about) {
+                startActivity(new Intent(Home.this,about.class));
+
+            }
+            else if(id == R.id.logout) {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(Home.this, signin.class));
+
+                            }
 
             return super.onOptionsItemSelected(item);
         }
@@ -120,5 +138,10 @@ public class Home extends AppCompatActivity {
             }
         }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+        super.onBackPressed();
     }
+}
 

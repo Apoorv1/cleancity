@@ -110,10 +110,11 @@ public class signin extends AppCompatActivity {
 
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
         // Check for existing Google Sign In account, if the user is already signed in
         // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        updateui(account);//perform actions according to account object
+        //GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        //updateui(account);//perform actions according to account object
         signing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -220,6 +221,7 @@ public class signin extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
+
     }
     @Override
     public void onStop() {
