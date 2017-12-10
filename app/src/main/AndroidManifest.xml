@@ -21,6 +21,13 @@
         <activity
             android:name=".Home"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".signin"
+            />
+        <activity
+            android:name=".signup"
+          />
+
         <activity android:name=".setting" />
         <activity android:name=".about"></activity>
     </application>

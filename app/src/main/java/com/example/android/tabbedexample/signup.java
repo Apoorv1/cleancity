@@ -17,6 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -29,9 +34,8 @@ import static android.content.ContentValues.TAG;
  * Created by mukund on 12/2/2017.
  */
 
-public class signup extends Fragment {
+public class signup extends AppCompatActivity {
     TextView signinlink;
-    Fragment fr;
     String signup_email;
     String signup_password;
     String signup_reenterpassword;
@@ -39,35 +43,29 @@ public class signup extends Fragment {
     TextView signupe;
     FragmentManager fm;
     EditText esignup_email,esignup_password;
-    FragmentTransaction ft;
-    View signupLayout;
-    private Fragment currentFragment;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    GoogleSignInClient mGoogleSignInClient;
+    TextView signupg;
+    int RC_SIGN_IN =1000;
+    protected void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.signup);
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+     getSupportActionBar().hide();
 
-        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-         signupLayout= inflater.inflate(R.layout.signup,container,false);
-        signinlink=(TextView) signupLayout.findViewById(R.id.signinlink);
+        signinlink=(TextView)findViewById(R.id.signinlink);
+        signupg = (TextView) findViewById(R.id.signupg);
         signinlink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-                fr = new signin();
-                fm = getFragmentManager();
-                if (fm !=null) {
-                    ft = fm.beginTransaction();
-                    ft.replace(R.id.fragment_container, fr);
-                    ft.commit();
-                }
-
+               startActivity(new Intent(signup.this,signin.class));
             }
         });
         //.........................
@@ -78,9 +76,11 @@ public class signup extends Fragment {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
+                    sendVerificationEmail();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    Intent myIntent = new Intent(getActivity(), Home.class);
-                    getActivity().startActivity(myIntent);
+                    //startActivity(new Intent(signup.this,signin.class));
+
+
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -88,7 +88,7 @@ public class signup extends Fragment {
                 // ...
             }
         };
-        signupe = (TextView)signupLayout.findViewById(R.id.signupe);
+        signupe = (TextView)findViewById(R.id.signupe);
 
         signupe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,25 +97,66 @@ public class signup extends Fragment {
             }
         });
 
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.web_client_id))
+                .requestEmail()
+                .build();
 
-        return signupLayout;
+
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        // Check for existing Google Sign In account, if the user is already signed in
+        // the GoogleSignInAccount will be non-null.
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        updateui(account);//perform actions according to account object
+        signupg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn();
+            }
+        });
 
 
+    }
 
 
+    public void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                updateui(account);
+            }
+            catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e);
+                // ...
+                updateui(null);
+            }
+        }
 
     }
     public void checksignup(){
 
-        esignup_email = (EditText) signupLayout.findViewById(R.id.signup_email);
-        esignup_password = (EditText) signupLayout.findViewById(R.id.signup_password);
+        esignup_email = (EditText)findViewById(R.id.signup_email);
+        esignup_password = (EditText) findViewById(R.id.signup_password);
         signup_email = esignup_email.getText().toString();
         signup_password = esignup_password.getText().toString();
-        esignup_reenterpassword =(EditText) signupLayout.findViewById(R.id.signup_renterpassword);
+        esignup_reenterpassword =(EditText)findViewById(R.id.signup_renterpassword);
         signup_reenterpassword =esignup_reenterpassword.getText().toString();
         if(signup_email.matches("") || signup_password.matches("")){
-            Toast.makeText(getActivity(), "You cannot leave email or password field empty",
+            Toast.makeText(this, "You cannot leave email or password field empty",
                     Toast.LENGTH_SHORT).show();
 
         }
@@ -123,7 +164,7 @@ public class signup extends Fragment {
                 if(signup_reenterpassword.equals(signup_password)) {
 
                     mAuth.createUserWithEmailAndPassword(signup_email, signup_password)
-                            .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
@@ -132,8 +173,7 @@ public class signup extends Fragment {
                                     // the auth state listener will be notified and logic to handle the
                                     // signed in user can be handled in the listener.
                                     if (!task.isSuccessful()) {
-                                        Toast.makeText(getActivity(), "Authorization failed",
-                                                Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(signup.this , "Authorization failed" , Toast.LENGTH_SHORT).show();
                                     }
 
                                     // ...
@@ -141,7 +181,7 @@ public class signup extends Fragment {
                             });
                 }
                 else{
-                    Toast.makeText(getActivity(), "Renter your Password",
+                    Toast.makeText(this, "Renter your Password",
                             Toast.LENGTH_SHORT).show();
                     esignup_reenterpassword.setText("");
                     esignup_password.setText("");
@@ -163,4 +203,44 @@ public class signup extends Fragment {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
+    public void updateui(GoogleSignInAccount user)
+    {
+        if(user!=null)
+        {
+            Intent myIntent = new Intent(this, Home.class);
+            this.startActivity(myIntent);
+
+        }
+
+    }
+
+
+    private void sendVerificationEmail()
+    {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        user.sendEmailVerification()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // email sent
+
+
+                            // after email is sent just logout the user and finish this activity
+                            FirebaseAuth.getInstance().signOut();
+                            Toast.makeText(signup.this,"check your inbox and verify email",Toast.LENGTH_SHORT).show();
+                          startActivity(new Intent(signup.this,signin.class));
+                        }
+                        else
+                        {
+                            // email not sent, so display message and restart the activity or do whatever you wish to do
+                            Toast.makeText(signup.this,"email not sent RETRY AGAIN",Toast.LENGTH_SHORT).show();
+
+                            //restart this activity
+                        }
+                    }
+                });
+    }
+
 }

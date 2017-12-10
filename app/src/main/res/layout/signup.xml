@@ -134,7 +134,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/holo_red_dark"
         android:textColor="@android:color/white"
-        android:text="SIGN UP WITH GOOGLE"
+        android:text="SIGN IN WITH GOOGLE"
         android:id="@+id/signupg"
         android:gravity="center_horizontal"
         android:textSize="20sp"
